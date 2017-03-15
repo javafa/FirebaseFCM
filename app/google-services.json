@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "455540067957",
+    "firebase_url": "https://fir-fcm-ddcbe.firebaseio.com",
+    "project_id": "fir-fcm-ddcbe",
+    "storage_bucket": "fir-fcm-ddcbe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455540067957:android:fb2f4c0062e5d35b",
+        "android_client_info": {
+          "package_name": "com.veryworks.android.firebasefcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455540067957-7sm40lfiplirq2m473ukts7q0l1uu077.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.veryworks.android.firebasefcm",
+            "certificate_hash": "41e1be29278ebb0d6e4a4dba765be56cf738096a"
+          }
+        },
+        {
+          "client_id": "455540067957-fb5j598cljdjtq1q88ffomlvkuqj01hm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp9gSvFldkoDZaXCFk4gxey79mLauGPxo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455540067957-fb5j598cljdjtq1q88ffomlvkuqj01hm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
