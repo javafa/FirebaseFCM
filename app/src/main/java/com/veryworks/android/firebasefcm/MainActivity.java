@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -52,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         adapter = new ListAdapter(this, datas);
         listView.setAdapter(adapter);
+
+        // 리스트를 클릭하면 사용자정보중에 token 값을 화면에 뿌린다
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                User user = datas.get(position);
+                textToken.setText(user.getToken());
+            }
+        });
     }
 
     public void sendNotification(View view){
@@ -76,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     String fbPw = dataSnapshot.child("password").getValue().toString();
 
                     if(fbPw.equals(pw)){
+                        addToken();
                         setList();
                     }else{
                         Toast.makeText(MainActivity.this, "비밀번호가 틀렸습니다", Toast.LENGTH_SHORT).show();
@@ -89,6 +100,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void addToken(){
+        final String id = editId.getText().toString();
+        userRef.child(id).child("token").setValue(getToken());
     }
 
     public void setList(){
@@ -113,13 +129,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public String getToken(View view){
+    public String getToken(){
         String token = FirebaseInstanceId.getInstance().getToken();
         Log.e("Token===",token);
         return token;
     }
 }
 
+
+// 리스트 아답터
 class ListAdapter extends BaseAdapter {
     Context context;
     List<User> datas;
