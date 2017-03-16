@@ -13,10 +13,12 @@ request.setCharacterEncoding("utf-8");  // 요청값이 한글일 경우 처리
 
 String to_token = request.getParameter("to_token");
 String msg      = request.getParameter("msg");
+String sender   = request.getParameter("sender");
+String title    = " 보내는사람:"+sender;
 
 // 3. fcm 서버로 메시지를 전송
 // 3.1 수신한 메시지를 json 형태로 변경해준다.
-String json_string = "{\"to\": \""+to_token+"\", \"notification\": { \"title\":\"FCM TEST\" , \"body\": \"" + msg + "\"}}";
+String json_string = "{\"to\": \""+to_token+"\", \"notification\": { \"title\":\""+title+"\" , \"body\": \"" + msg + "\"}}";
 
 // 3.2 HttpUrlConnection 을 사용해서 FCM서버측으로 메시지를 전송한다
 //     a.서버연결
@@ -38,7 +40,7 @@ if(responseCode == HttpURLConnection.HTTP_OK){ // code 200
 	// 결과처리후 FCM 서버측에서 발송한 결과메시지를 꺼낸다.
 	BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 	String dataLine = "";
-	// 메시지를 한줄씩 읽어서 result 변수에 담아두고 
+	// 메시지를 한줄씩 읽어서 result 변수에 담아두고
 	while((dataLine = br.readLine()) != null){
 		result = result + dataLine;
 	}
