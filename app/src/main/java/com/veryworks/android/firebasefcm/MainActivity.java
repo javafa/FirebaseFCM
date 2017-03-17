@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     String result = "";
 
                     // 1. 내 서버정보 세팅
-                    String server_url = "http://192.168.1.156:8080/sendMsgToFCM.jsp";
+                    String server_url = "http://192.168.1.156:8080/fcm/sender";
                     // 2. 서버로 전송할 POST message 세팅
                     String post_data = "to_token=" + token + "&msg=" + msg + "&sender=" + sender;
 
