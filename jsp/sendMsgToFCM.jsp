@@ -16,9 +16,18 @@ String msg      = request.getParameter("msg");
 String sender   = request.getParameter("sender");
 String title    = " 보내는사람:"+sender;
 
+String point = "576434397";
+
 // 3. fcm 서버로 메시지를 전송
 // 3.1 수신한 메시지를 json 형태로 변경해준다.
-String json_string = "{\"to\": \""+to_token+"\", \"notification\": { \"title\":\""+title+"\" , \"body\": \"" + msg + "\"}}";
+String json_string = "{\"to\": \"" + to_token + "\""
+                   + ",\"data\" : { \"point\" : \"" + point + "\" }"
+                   + ",\"notification\": { \"title\":\"" + title + "\""
+                                        + ", \"body\": \"" + msg + "\""
+                                        + ", \"click_action\" : \"PointActivity\"}"
+                                        +"}";
+
+out.print(json_string+"\n");
 
 // 3.2 HttpUrlConnection 을 사용해서 FCM서버측으로 메시지를 전송한다
 //     a.서버연결
